@@ -37,7 +37,7 @@ namespace AndanteTribe.Unity.Extensions
         [SerializeReference]
         private IObjectReference<Material> _material = null!;
 
-        [SerializeField, Tooltip("タップエフェクトの最大発生数")]
+        [SerializeField, Tooltip("タップエフェクトの最大発生数"), Range(0, int.MaxValue)]
         private uint _maxCount = MaxCountDefault;
 
         /// <summary>
@@ -45,7 +45,7 @@ namespace AndanteTribe.Unity.Extensions
         /// </summary>
         public uint MaxCount
         {
-            get => (uint)_graphicsBuffer.count;
+            get => _maxCount;
             set
             {
                 _maxCount = value;
@@ -86,12 +86,12 @@ namespace AndanteTribe.Unity.Extensions
                 return;
             }
 #endif
-            _graphicsBuffer = new(GraphicsBuffer.Target.Structured, MaxCountDefault, sizeof(float) * 3);
+            _graphicsBuffer = new(GraphicsBuffer.Target.Structured, (int)_maxCount, sizeof(float) * 3);
             _recordsID = Shader.PropertyToID("_Records");
             _countID = Shader.PropertyToID("_Count");
             _durationID = Shader.PropertyToID("_Duration");
             _screen = new Rect(0, 0, Screen.width, Screen.height);
-            ArrayPool<Vector3>.Shared.Grow(ref _records, MaxCountDefault);
+            ArrayPool<Vector3>.Shared.Grow(ref _records, (int)_maxCount);
             LoadMaterialAsync(destroyCancellationToken).Forget();
 
             async UniTaskVoid LoadMaterialAsync(CancellationToken cancellationToken)
@@ -161,7 +161,7 @@ namespace AndanteTribe.Unity.Extensions
 
                 if (_recordsCount > 0)
                 {
-                    _graphicsBuffer.SetData(_records);
+                    _graphicsBuffer.SetData(_records, 0, 0, _recordsCount);
                     material.SetFloat(_durationID, _lifetime);
                 }
 
@@ -182,10 +182,6 @@ namespace AndanteTribe.Unity.Extensions
         {
             base.OnDestroy();
 
-#if ENABLE_INPUT_SYSTEM
-            _module.leftClick.action.performed -= _onLeftClick;
-#endif
-
 #if UNITY_EDITOR
             if (!UnityEditor.EditorApplication.isPlaying && UnityEditor.EditorApplication.isPlayingOrWillChangePlaymode)
             {
@@ -200,6 +196,10 @@ namespace AndanteTribe.Unity.Extensions
             {
                 Destroy(material);
             }
+
+#if ENABLE_INPUT_SYSTEM
+            _module.leftClick.action.performed -= _onLeftClick;
+#endif
         }
     }
 }
