@@ -1,0 +1,18 @@
+{
+    "name": "TapEffect.Editor",
+    "rootNamespace": "AndanteTribe.Unity.Extensions.Editor",
+    "references": [
+        "GUID:ca86a4c1397a00c41a451d8bf63fbe77"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": true,
+    "precompiledReferences": [],
+    "autoReferenced": false,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
