@@ -13,10 +13,10 @@ using UnityEngine.UI;
 namespace AndanteTribe.Unity.Extensions
 {
     /// <summary>
-    /// タップエフェクトを表示するグラフィックコンポーネント.
+    /// Graphic component that displays a tap effect.
     /// </summary>
     /// <remarks>
-    /// レイヤーを高くすることをすすめる.
+    /// It is recommended to place this component on a higher-layer UI element.
     /// </remarks>
     public class TapEffect : Graphic
     {
@@ -37,11 +37,11 @@ namespace AndanteTribe.Unity.Extensions
         [SerializeReference]
         private IObjectReference<Material> _material = null!;
 
-        [SerializeField, Tooltip("タップエフェクトの最大発生数"), Range(0, int.MaxValue)]
+        [SerializeField, Tooltip("Maximum number of simultaneous tap effects"), Range(0, int.MaxValue)]
         private uint _maxCount = MaxCountDefault;
 
         /// <summary>
-        /// タップエフェクトの最大発生数.
+        /// The maximum number of simultaneous tap effects.
         /// </summary>
         public uint MaxCount
         {
@@ -53,11 +53,11 @@ namespace AndanteTribe.Unity.Extensions
             }
         }
 
-        [SerializeField, Tooltip("タップエフェクトの持続時間")]
+        [SerializeField, Tooltip("Duration of the tap effect")]
         private float _lifetime = 0.5f;
 
         /// <summary>
-        /// タップエフェクトの持続時間.
+        /// The duration in seconds of each tap effect animation.
         /// </summary>
         public float Lifetime
         {
