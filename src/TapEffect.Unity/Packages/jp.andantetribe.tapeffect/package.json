@@ -1,0 +1,18 @@
+{
+  "name": "jp.andantetribe.tapeffect",
+  "displayName": "TapEffect",
+  "author": {
+    "name": "AndanteTribe",
+    "url": "https://github.com/AndanteTribe"
+  },
+  "version": "0.1.0",
+  "unity": "2021.3",
+  "description": "Tap interaction effect for Unity UI (uGUI).",
+  "license": "MIT",
+  "dependencies": {
+    "com.unity.modules.uielements": "1.0.0",
+    "com.unity.ugui": "2.0.0",
+    "com.cysharp.unitask": "2.5.10",
+    "jp.andantetribe.objectreference": "1.0.0"
+  }
+}

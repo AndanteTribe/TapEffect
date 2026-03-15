@@ -1,0 +1,25 @@
+{
+    "name": "TapEffect",
+    "rootNamespace": "AndanteTribe.Unity.Extensions",
+    "references": [
+        "GUID:2bafac87e7f4b9b418d9448d219b01ab",
+        "GUID:f51ebe6a0ceec4240a699833d6309b23",
+        "GUID:5357f2d493d45f849802c905da70206b",
+        "GUID:75469ad4d38634e559750d17036d5f7c"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": true,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [
+        {
+            "name": "com.unity.inputsystem",
+            "expression": "",
+            "define": "ENABLE_INPUT_SYSTEM"
+        }
+    ],
+    "noEngineReferences": false
+}
